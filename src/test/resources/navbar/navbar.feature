@@ -1,4 +1,4 @@
-Feature: Navbar links
+Feature: Navbar Links
 
   Scenario Outline: Attempting to click the same page's navbar link
     Given the user is on the page with "<url>"

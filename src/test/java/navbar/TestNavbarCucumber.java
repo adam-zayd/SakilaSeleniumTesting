@@ -17,7 +17,7 @@ import java.time.Duration;
 
 import static org.testng.Assert.*;
 
-public class TestHomePageCucumber {
+public class TestNavbarCucumber {
     private WebDriver driver;
 
     @Before
@@ -27,7 +27,6 @@ public class TestHomePageCucumber {
         options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
-
     }
 
     @Given("the user is on the page with {string}")
