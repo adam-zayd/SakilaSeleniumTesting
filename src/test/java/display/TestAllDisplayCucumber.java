@@ -5,6 +5,7 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -64,11 +65,17 @@ public class TestAllDisplayCucumber {
     @When("the user clicks delete")
     public void click_delete() {
         driver.findElement(By.className("deleteButton")).click();
-        driver.switchTo().alert().accept();
     }
 
     @Then("the selecteds are deleted")
     public void check_selected_are_deleted() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.alertIsPresent());
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+        wait.until(ExpectedConditions.alertIsPresent());
+        Alert message = driver.switchTo().alert();
+        assertTrue(message.getText().endsWith("have been deleted."));
     }
 
     @Then("all selected are deselected")
