@@ -5,7 +5,6 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import net.bytebuddy.implementation.bytecode.Throw;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -14,8 +13,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 import java.util.Objects;
-
-import static java.lang.System.err;
 import static org.testng.Assert.*;
 
 public class TestCreateCucumber {
@@ -36,11 +33,11 @@ public class TestCreateCucumber {
         driver.get("http://localhost:5173/"+url);
     }
 
-    @When("the user clicks the CREATE {string} link")
-    public void userClicksCreate(String entity){
+    @When("the user clicks the CREATE link")
+    public void userClicksCreate(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("loading")));
-        WebElement createLink = driver.findElement(By.className("create"+entity+"Link"));
+        WebElement createLink = driver.findElement(By.className("createLink"));
         createLink.click();
     }
 
@@ -54,6 +51,27 @@ public class TestCreateCucumber {
         driver.get("http://localhost:5173/"+url+"/create");
     }
 
+    @Given("the user enters data into the create {string} form")
+    public void userEntersDataInCreateForm(String formType) {
+        switch (formType){
+            case "actors":
+                WebElement firstNameInput = driver.findElement(By.className("firstNameInput"));
+                firstNameInput.click();
+                firstNameInput.sendKeys("Selenium");
+
+                WebElement lastNameInput = driver.findElement(By.className("lastNameInput"));
+                lastNameInput.click();
+                lastNameInput.sendKeys("TesterValid");
+
+                WebElement filmIdsInput = driver.findElement(By.className("filmsInput"));
+                filmIdsInput.click();
+                filmIdsInput.sendKeys("101, 102, 103");
+                break;
+
+            default:
+                break;
+        }
+    }
     @When("the user submits a valid create {string} form")
     public void userSubmitsValidCreateForm(String formType) {
         switch (formType){

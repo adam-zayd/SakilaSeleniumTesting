@@ -1,7 +1,7 @@
 Feature:
   Scenario Outline: Create links
     Given the user is on the "<url>" page
-    When the user clicks the CREATE "<entity>" link
+    When the user clicks the CREATE link
     Then the page redirects to one with a url ending in "<url>/create"
     Examples:
       | url          | entity    |
@@ -99,7 +99,7 @@ Feature:
 
   Scenario Outline: Cancelling creation
     Given the user is on the "<entity>" create page
-    And the user submits a valid create "<entity>" form
+    And the user enters data into the create "<entity>" form
     And the user clicks the cancel button
     When the user "cancels" cancellation
     Then the "<entity>" stays the same
