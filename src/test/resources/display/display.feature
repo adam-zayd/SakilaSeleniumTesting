@@ -33,7 +33,7 @@
 #      | films      |
 #      | streams    |
 #      | categories |
-
+#
 #  Scenario Outline: Deleting selected
 #    Given the user is on "<url>" page
 #    When the user selects an individual
@@ -45,6 +45,6 @@
 #      | films      |
 #      | streams    |
 #      | categories |
-
-
-
+#
+#
+#

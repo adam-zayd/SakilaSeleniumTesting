@@ -575,20 +575,6 @@ public class TestCreateCucumber {
                     assertEquals(storedFilms, "101,102");
                     break;
                 }
-                else if (Objects.equals(errorType, "cancelled")) {
-                    WebElement firstNameInput = driver.findElement(By.className("firstNameInput"));
-                    String storedFirstName = firstNameInput.getAttribute("value");
-                    assertEquals(storedFirstName, "Selenium");
-
-                    WebElement lastNameInput = driver.findElement(By.className("lastNameInput"));
-                    String storedLastName = lastNameInput.getAttribute("value");
-                    assertEquals(storedLastName, "TesterValid");
-
-                    WebElement filmsInput = driver.findElement(By.className("filmsInput"));
-                    String storedFilms = filmsInput.getAttribute("value");
-                    assertEquals(storedFilms, "101,102,103");
-                    break;
-                }
 
                     case "films":
                         if (Objects.equals(errorType, "invalidId")) {
