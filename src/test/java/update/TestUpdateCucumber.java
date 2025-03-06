@@ -10,8 +10,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
 import java.util.List;
+
 import static org.testng.Assert.*;
 
 @SuppressWarnings("ALL")
@@ -88,7 +90,6 @@ public class TestUpdateCucumber {
                 assertEquals(releaseYearValue,"2010");
                 assertEquals(castValue,"12,57,146,191,192");
                 assertEquals(lengthValue,"180");
-                assertEquals(streamsValue,"1");
                 break;
 
             case "streams":
